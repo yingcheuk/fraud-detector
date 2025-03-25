@@ -1,7 +1,8 @@
 # fraud-detector
 
 Detecting fraudulent auto insurance claims using structured and textual data using machine learning (XGBoost) and interpretability tools (SHAP).  
-The goal is to identify likely fraud cases and help reduce financial loss for insurance providers.  
+
+**Goal:** Identify likely fraud cases and help reduce financial loss for insurance providers.  
 
 ---
 
