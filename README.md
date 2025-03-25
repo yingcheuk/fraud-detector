@@ -2,6 +2,9 @@
 
 Detecting fraudulent insurance claims using structured data and NLP techniques (XGBoost + SHAP).
 
+**Goal:** Detect fraudulent auto insurance claims using structured and textual data.  
+Build a machine learning model that can identify likely fraud cases and help reduce financial loss for insurance providers.  
+
 ---
 
 ## 📌 Project Overview
@@ -28,6 +31,7 @@ This project aims to build a machine learning model that identifies potentially 
 ---
 
 ## 🚀 Goals
+
 - Build an interpretable fraud detection model
 - Combine text + structured features
 - Handle class imbalance
