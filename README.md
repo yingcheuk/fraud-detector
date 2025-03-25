@@ -19,11 +19,11 @@ This project aims to build a machine learning model that identifies potentially 
 
 ## 📁 Project Structure
 
-/data         - Raw and processed data
-/notebooks    - Exploratory analysis and model development
-/src          - Source code (preprocessing, modeling)
-/models       - Saved trained models
-README.md     - Project documentation
+/data         - Raw and processed data  
+/notebooks    - Exploratory analysis and model development  
+/src          - Source code (preprocessing, modeling)  
+/models       - Saved trained models  
+README.md     - Project documentation  
 
 ---
 
