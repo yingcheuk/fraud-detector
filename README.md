@@ -1,44 +1,50 @@
 # fraud-detector
 
-Detecting fraudulent auto insurance claims using structured and textual data using machine learning (XGBoost) and interpretability tools (SHAP).  
+Detecting fraudulent auto insurance claims using structured data and machine learning (Logistic Regression, XGBoost), with a focus on model interpretability and performance evaluation.
 
-**Goal:** Identify likely fraud cases and help reduce financial loss for insurance providers.  
+**Goal:** Identify likely fraud cases to help reduce financial losses for insurance providers.
 
 ---
 
 ## 📌 Project Overview
-This project aims to build a machine learning model that identifies potentially fraudulent insurance claims. It combines structured data (e.g., claim amounts, customer info) and unstructured data (text descriptions) to predict the likelihood of fraud.
+
+This project builds a machine learning pipeline to identify potentially fraudulent auto insurance claims. It uses only structured tabular data (e.g., customer info, claim history, vehicle details) to predict fraud. The workflow includes data cleaning, outlier segmentation, model comparison, and evaluation.
 
 ---
 
 ## 🧠 Techniques Used
+
 - Supervised Learning: Logistic Regression, XGBoost
-- NLP: Text preprocessing, TF-IDF
-- Explainability: SHAP values
+- Data Cleaning: Outlier removal (IQR), inconsistent date handling
+- Feature Encoding: One-hot and Label Encoding
+- Scaling: StandardScaler for numerical features
 - Evaluation: Precision, Recall, F1-score, ROC AUC
+- (planned) Explainability: SHAP values for model interpretation
 
 ---
 
 ## 📁 Project Structure
 
-`/data` — Raw and processed data  
-`/notebooks` — Exploratory analysis and model development  
-`/src` — Source code (preprocessing, modeling)  
-`/models` — Saved trained models  
-`README.md` — Project documentation  
+`/data` — Raw and cleaned CSVs  
+`/notebooks` — EDA, modeling, evaluation  
+`/src` — Modular code (e.g., preprocessing, utils)  
+`/models` — Saved model files (e.g., `.pkl`)  
+`README.md` — You are here 📄
 
 ---
 
-## 🚀 Goals
+## 🚀 Current Goals
 
-- Build an interpretable fraud detection model
-- Combine text + structured features
-- Handle class imbalance
-- Deliver actionable insights for fraud analysts
+- Build and compare models for both inlier and outlier segments
+- Select the best-performing model per segment
+- Ensure reproducibility and modular pipeline design
+- Prepare for adding explainability tools like SHAP
 
 ---
 
 ## 🔮 Future Improvements
-- Use BERT embeddings for better NLP
-- Deploy as a Streamlit web app
-- Integrate with real-time scoring pipeline
+
+- Incorporate textual features (if available) for hybrid modeling
+- Add SHAP-based insights for fraud investigator support
+- Build a user-facing app using Streamlit or Gradio
+- Deploy as an API for integration into production
