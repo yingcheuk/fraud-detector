@@ -44,7 +44,8 @@ fraud-detector/
 │   ├── inference.py            # Batch inference on new data
 │   ├── visualization.py        # Feature importance plots
 │   └── feature_selection.py    # Feature filtering (optional experiment)
-└── README.md               # Project documentation
+│
+└── README.md              # Project documentation
 
 ---
 
