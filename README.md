@@ -32,20 +32,20 @@ This project builds a machine learning pipeline to detect fraud in structured au
 
 ## 📁 Project Structure
 
-fraud-detector/
-│
-├── data/                   # Input data and prediction results
-├── models/                 # Saved models and preprocessors (.pkl)
-├── notebooks/              # EDA, modeling, and inference notebooks
-├── src/                    # Modular Python code
-│   ├── preprocessing.py        # Data cleaning, outlier removal
-│   ├── prep_features.py        # Feature encoding and scaling
-│   ├── train.py                # Model training and evaluation
-│   ├── inference.py            # Batch inference on new data
-│   ├── visualization.py        # Feature importance plots
-│   └── feature_selection.py    # Feature filtering (optional experiment)
-│
-└── README.md              # Project documentation
+fraud-detector/  
+│  
+├── data/                   # Input data and prediction results  
+├── models/                 # Saved models and preprocessors (.pkl)  
+├── notebooks/              # EDA, modeling, and inference notebooks  
+├── src/                    # Modular Python code   
+│   ├── preprocessing.py        # Data cleaning, outlier removal  
+│   ├── prep_features.py        # Feature encoding and scaling  
+│   ├── train.py                # Model training and evaluation  
+│   ├── inference.py            # Batch inference on new data  
+│   ├── visualization.py        # Feature importance plots  
+│   └── feature_selection.py    # Feature filtering (optional experiment)  
+│  
+└── README.md              # Project documentation  
 
 ---
 
