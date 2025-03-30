@@ -1,0 +1,5 @@
+,F1 (Fraud),Recall (Fraud),Precision (Fraud),Accuracy,ROC AUC
+Model 1: LR Inliers,0.59,0.51,0.7,0.83,0.84
+Model 2: XGB Inliers,0.62,0.65,0.6,0.82,0.82
+Model 3: LR Outliers,0.42,0.31,0.67,0.74,0.8
+Model 4: XGB Outliers,0.77,0.77,0.77,0.86,0.94
