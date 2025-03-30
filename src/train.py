@@ -58,6 +58,7 @@ def train_models(df_inliers, df_outliers, detail = False, save_path='/Users/jenn
     # Save model
     joblib.dump(model2, f"{save_path}model2_xgb_inliers.pkl")
     joblib.dump(preprocessor2, f"{save_path}preprocessor2_inliers.pkl")
+    joblib.dump(X2_test, f"{save_path}X2_test_inliers.pkl")
 
     
     # --- Model 3: Logistic Regression (outliers) ---
@@ -92,6 +93,7 @@ def train_models(df_inliers, df_outliers, detail = False, save_path='/Users/jenn
     # Save model
     joblib.dump(model4, f"{save_path}model4_xgb_outliers.pkl")
     joblib.dump(preprocessor4, f"{save_path}preprocessor4_outliers.pkl")
+    joblib.dump(X4_test, f"{save_path}X4_test_outliers.pkl")
 
     return reports, metrics_data
 

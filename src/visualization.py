@@ -91,3 +91,14 @@ def plot_xgb_importance(model, feature_names=None, max_features=10, importance_t
         print(f"📸 Plot saved to {save_path}")
     else:
         plt.show()
+
+
+
+
+# function 3: SHAP
+    
+def explain_model_with_shap(model, X, feature_names=None, title=None):
+    import shap
+    explainer = shap.Explainer(model)
+    shap_values = explainer(X)
+    shap.summary_plot(shap_values, X, feature_names=feature_names, plot_size=(7, 5), show=True)
