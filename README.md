@@ -18,15 +18,23 @@ This project builds a machine learning pipeline to detect fraud in structured au
 
 ---
 
+## 💡 Why This Matters  
+Insurance fraud is a high-impact use case for ML. This project shows how:  
+- Domain-specific preprocessing (inliers/outliers) boosts performance  
+- Explainability tools like SHAP make black-box models more trustworthy  
+- Modular pipelines keep experiments clean and reproducible  
+
+---
+
 ## 🧠 Techniques Used
 
 - Supervised Learning: Logistic Regression, XGBoost  
 - Outlier Handling: IQR-based removal  
 - Feature Engineering: One-hot encoding (LogReg), Ordinal encoding (XGBoost)  
-- Scaling: StandardScaler (LogReg)
+- Feature Scaling: StandardScaler (for Logistic Regression)
 - Evaluation Metrics: Accuracy, Precision, Recall, F1, ROC AUC
-- Feature Importance: Gain-based filtering (XGBoost, exploratory)  
-- (Planned) Explainability: SHAP values for model interpretation  
+- Class Imbalance Handling: scale_pos_weight in XGBoost   
+- Model Explainability: SHAP (SHapley Additive Explanations)  
 
 ---
 
@@ -42,7 +50,7 @@ fraud-detector/
 │   ├── prep_features.py        # Feature encoding and scaling
 │   ├── train.py                # Model training and evaluation
 │   ├── inference.py            # Batch inference on new data
-│   ├── visualization.py        # Feature importance plots
+│   ├── visualization.py        # SHAP explanations and feature name utilities
 │   └── feature_selection.py    # Feature filtering (optional experiment)
 └── README.md               # Project documentation
 ```
@@ -55,11 +63,14 @@ The pipeline is built from reusable, modular functions:
 - 🧼 `clean_data()` & `remove_outliers_iqr()`  
   → Clean the dataset, fix dates, and isolate outliers  
 
-- 📊 `check_class_ratio()`  
+- 📉 `check_class_ratio()`  
   → Explore fraud distribution across inliers and outliers   
 
 - ⚙️ `prepare_for_logreg()` & `prepare_for_xgb()`  
-  → Preprocess features for each model type (scaling + encoding)  
+  → Preprocess features for each model type (scaling + encoding)
+
+- 🏷️ `get_feature_names_from_column_transformer()`
+  → Extract readable feature names from fitted ColumnTransformer  
 
 - 🧠 `train_models()`  
   → Train four models (inliers/outliers × LR/XGB) and save them  
@@ -70,8 +81,8 @@ The pipeline is built from reusable, modular functions:
 - 🔍 `predict_new_data()`  
   → Run saved models on new incoming claims for fraud prediction
 
-- 🧪 `get_important_features_from_xgb()` (experimental)
-  → Identify top features by gain score (optional filtering)  
+- 🧠 `explain_model_with_shap()`  
+  → Visualize top drivers of XGBoost model predictions using SHAP    
 
 ---
 
@@ -79,8 +90,7 @@ The pipeline is built from reusable, modular functions:
 
 - `01_data_exploration.ipynb`: Clean raw data, explore distributions, and split into inliers/outliers  
 - `02_modeling.ipynb`: Train and compare 4 models (LR & XGB on inliers/outliers)  
-- `03_inference.ipynb`: Run trained models on new data and generate predictions
-- `feature_importance_experiment.ipynb` (Optional) — Explore impact of filtering features by importance  
+- `03_inference.ipynb`: Apply trained models to new test claims and generate predictions    
 
 ---
 
@@ -106,7 +116,7 @@ After running inference on new claims, you get an output CSV like:
 
 ## 🔮 Future Improvements
 
-- Add explainability tools (e.g., SHAP) for fraud investigators  
+- Add model-based alert thresholds for production deployment  
 - Test hybrid models using both structured and textual features  
 - Deploy via Streamlit or Gradio for user-friendly interaction  
 - Package the pipeline into an API for production integration

@@ -102,3 +102,10 @@ def explain_model_with_shap(model, X, feature_names=None, title=None):
     explainer = shap.Explainer(model)
     shap_values = explainer(X)
     shap.summary_plot(shap_values, X, feature_names=feature_names, plot_size=(7, 5), show=True)
+
+
+
+
+
+
+

@@ -22,6 +22,8 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 from prep_features import prepare_for_logreg, prepare_for_xgb
 
+from collections import Counter
+
 def train_models(df_inliers, df_outliers, detail = False, save_path='/Users/jennifercyc/Desktop/HSH/ML Project/fraud-detector/models/', random_state=42):
     reports = []
     metrics_data = []
@@ -46,7 +48,13 @@ def train_models(df_inliers, df_outliers, detail = False, save_path='/Users/jenn
     # --- Model 2: XGBoost (inliers) ---
     X2, y2, preprocessor2, feature_names2 = prepare_for_xgb(df_inliers, return_preprocessor=True)
     X2_train, X2_test, y2_train, y2_test = train_test_split(X2, y2, test_size=0.2, stratify=y2, random_state=random_state)
-    model2 = XGBClassifier(eval_metric='logloss')
+    # Define model
+    class_counts2 = Counter(y2)
+    scale_pos_weight2 = class_counts2[0] / class_counts2[1]
+    model2 = XGBClassifier(
+        eval_metric='logloss',
+        scale_pos_weight=scale_pos_weight2
+    )
     # Train model
     model2.fit(X2_train, y2_train)
     y2_pred = model2.predict(X2_test)
@@ -81,6 +89,7 @@ def train_models(df_inliers, df_outliers, detail = False, save_path='/Users/jenn
     # --- Model 4: XGBoost (outliers) ---
     X4, y4, preprocessor4, feature_names4 = prepare_for_xgb(df_outliers, return_preprocessor=True)
     X4_train, X4_test, y4_train, y4_test = train_test_split(X4, y4, test_size=0.2, stratify=y4, random_state=random_state)
+    # Define model
     model4 = XGBClassifier(eval_metric='logloss')
     # Train model
     model4.fit(X4_train, y4_train)
