@@ -96,16 +96,26 @@ def plot_xgb_importance(model, feature_names=None, max_features=10, importance_t
 
 
 # function 3: SHAP
-    
-def explain_model_with_shap(model, X, feature_names=None, title=None):
+
+
+def explain_model_with_shap(model, X, feature_names=None, model_name="model"):
     import shap
+    import matplotlib.pyplot as plt
+    import os
+
     explainer = shap.Explainer(model)
     shap_values = explainer(X)
-    shap.summary_plot(shap_values, X, feature_names=feature_names, plot_size=(7, 5), show=True)
 
+    shap.summary_plot(shap_values, X, feature_names=feature_names, plot_size=(7, 5), show=False)
 
+    ax = plt.gca()
+    ax.set_title(f"SHAP Summary Plot – {model_name}", fontsize=12)
+    ax.tick_params(axis='y', labelsize=9)
+    ax.tick_params(axis='x', labelsize=10)
 
-
-
+    os.makedirs("/Users/jennifercyc/Desktop/HSH/ML Project/fraud-detector/models/plots", exist_ok=True)
+    plt.tight_layout()
+    plt.savefig(f"/Users/jennifercyc/Desktop/HSH/ML Project/fraud-detector/models/plots/shap_summary_{model_name}.png", dpi=300)
+    plt.show()
 
 
