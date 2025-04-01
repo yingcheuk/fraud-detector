@@ -34,7 +34,7 @@ Insurance fraud is a high-impact use case for ML. This project shows how:
 - Feature Scaling: StandardScaler (for Logistic Regression)
 - Evaluation Metrics: Accuracy, Precision, Recall, F1, ROC AUC
 - Class Imbalance Handling: scale_pos_weight in XGBoost   
-- Model Explainability: SHAP (SHapley Additive Explanations)  
+- Model Explainability: SHAP-based feature interpretation, category-level insight      
 
 ---
 
@@ -79,10 +79,22 @@ The pipeline is built from reusable, modular functions:
   → Tabulate model performance across key metrics  
 
 - 🔍 `predict_new_data()`  
-  → Run saved models on new incoming claims for fraud prediction
+  → Run saved models on new incoming claims for fraud prediction  
 
 - 🧠 `explain_model_with_shap()`  
-  → Visualize top drivers of XGBoost model predictions using SHAP    
+  → Visualize top drivers of XGBoost model predictions using SHAP  
+
+- 🧩 `print_category_encoding()`  
+  → Show category-to-number mappings used in OrdinalEncoder  
+
+- 🎯 `get_category_range()`  
+  → Map SHAP color ranges (low/mid/high) to actual categorical labels  
+
+- 📐 `get_numerical_range()`  
+  → Map SHAP color ranges (low/mid/high) to numerical value ranges  
+
+- 📋 `get_feature_names_from_column_transformer()`   
+  → Extract readable feature names from fitted ColumnTransformer  
 
 ---
 
